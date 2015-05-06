@@ -448,7 +448,7 @@ def register():
                                      user_invite=user_invite)
 
         # Redirect if USER_ENABLE_CONFIRM_EMAIL is set
-        if user_manager.enable_confirm_email and require_email_confirmation:
+        if user_manager.enable_confirm_email and not user_manager.enable_login_without_confirm_email:
             next = request.args.get('next', _endpoint_url(user_manager.after_register_endpoint))
             return redirect(next)
 
